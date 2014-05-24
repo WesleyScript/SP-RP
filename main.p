@@ -24,7 +24,7 @@ new
 new
 	MySQL_ConnectionHandle;
 	
-function SendChatLongMessage(playerid, Float:distance, color, message[])
+function SendChatMessage(playerid, Float:distance, color, message[])
 {
 	new
 	    Float:player_Pos[3];

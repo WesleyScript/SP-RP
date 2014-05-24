@@ -2,13 +2,13 @@
 
 hook Server_OnGameModeInit()
 {
-    SetGameModeText("SP-RP v0.1");
+	SetGameModeText("SP-RP v0.1");
 	SendRconCommand("hostname Sao Paulo RP (www.SaoPaulo-RP.tk)");
 	SendRconCommand("mapname Sao Paulo");
 	
 	MySQL_ConnectDB();
 	MySQL_CreateTables();
-
+	
 	return 1;
 }
 
@@ -18,7 +18,7 @@ hook Server_OnGameModeExit()
 	
 	for (new i; i < MAX_TEXT_DRAWS; ++i)
 	{
-	    DestroyTextDraw(i);
+	    TextDrawDestroy(Text: i);
 	}
 	
 	return 1;

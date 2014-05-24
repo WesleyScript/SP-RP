@@ -1,16 +1,16 @@
 //File created at 16:02 on 19/05/2014
 
-#include "lib/a_samp"
+#include "inc/a_samp"
 
 #define hook%0(%1) stock%0(%1)
 #define function%0(%1) stock%0(%1)
 #define query%0(%1) forward%0(%1);public%0(%1)
 
-#include "lib/plugins/sscanf"
-#include "lib/plugins/mysql"
-#include "lib/plugins/streamer"
+#include "inc/plugins/sscanf"
+#include "inc/plugins/mysql"
+#include "inc/plugins/streamer"
 
-#include "lib/extra/zcmd"
+#include "inc/extra/zcmd"
 
 #include "main.p"
 
@@ -38,14 +38,14 @@ main() { }
 
 public OnGameModeInit()
 {
-    	AntiDeAMX();
-
+	AntiDeAMX();
+	
 	DisableInteriorEnterExits();
 	EnableStuntBonusForAll(0);
 	ManualVehicleEngineAndLights();
 	
 	Server_OnGameModeInit();
-
+	
 	return 1;
 }
 
@@ -100,7 +100,9 @@ public OnVehicleDeath(vehicleid, killerid)
 
 public OnPlayerText(playerid, text[])
 {
-	return 1;
+	Player_OnPlayerText(playerid, text);
+	
+	return 0;
 }
 
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)

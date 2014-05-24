@@ -29,11 +29,29 @@ hook Player_OnPlayerDisconnect(playerid, reason)
 	}
 
 	format(string_Send, sizeof(string_Send), "O Jogador {FFFFFF}%s {FF0000}se desconectou! ({FFFFFF}%s{FF0000})", PlayerInfo[playerid][player_Name], string_Reason);
-	SendChatLongMessage(playerid, 70.0, 0xFF0000AA, string_Send);
+	SendChatMessage(playerid, 70.0, 0xFF0000AA, string_Send);
 	
 	for (new i; i < sizeof(PlayerInfo[]); ++i)
 	    PlayerInfo[playerid][E_PLAYER_INFO: i] = 0;
 
+	return 1;
+}
+
+hook Player_OnPlayerText(playerid, text[])
+{
+	new
+		string_Text[128];
+	
+	if (strlen(text) > 100)
+	{
+		SendClientMessage(playerid, 0xFF0000AA, "Texto muito grande!");
+		
+		return 0;
+	}
+	
+	format(string_Text, sizeof(string_Text), "%s: %s", PlayerInfo[playerid][player_Name], text);
+	SendChatMessage(playerid, 45.0, 0xC9C9C9AA, string_Text);
+	
 	return 1;
 }
 
