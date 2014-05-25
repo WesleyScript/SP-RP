@@ -49,6 +49,14 @@ hook Player_OnPlayerText(playerid, text[])
 		return 0;
 	}
 	
+	if (PlayerInfo[playerid][player_Muted])
+	{
+		format(string_Text, sizeof(string_Text), "Você está calado, motivo: %s", PlayerInfo[playerid][player_MutedReason]);
+		SendClientMessage(playerid, 0xFF0000AA, string_Text);
+		
+		return 0;
+	}
+	
 	format(string_Text, sizeof(string_Text), "%s: %s", PlayerInfo[playerid][player_Name], text);
 	SendChatMessage(playerid, 45.0, 0xC9C9C9AA, string_Text);
 	

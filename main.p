@@ -10,7 +10,11 @@ enum E_PLAYER_INFO
 {
 	player_Name[MAX_PLAYER_NAME],
 	player_SID,
+	
 	player_Ip[16],
+	player_MutedReason[128],
+	
+	bool:player_Muted,
 	
 	PlayerText:td_Status
 }
