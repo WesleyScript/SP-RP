@@ -3,7 +3,7 @@
 hook Interface_OnPlayerConnect(playerid)
 {
 	//Textdraws
-    PlayerInfo[playerid][td_Status] = CreatePlayerTextDraw(playerid, 632.000000, 1.749985, "Status Conta");
+	PlayerInfo[playerid][td_Status] = CreatePlayerTextDraw(playerid, 632.000000, 1.749985, "Status Conta");
 	PlayerTextDrawLetterSize(playerid, PlayerInfo[playerid][td_Status], 0.239499, 0.981664);
 	PlayerTextDrawAlignment(playerid, PlayerInfo[playerid][td_Status], 3);
 	PlayerTextDrawColor(playerid, PlayerInfo[playerid][td_Status], 65535);
@@ -14,4 +14,13 @@ hook Interface_OnPlayerConnect(playerid)
 	PlayerTextDrawSetProportional(playerid, PlayerInfo[playerid][td_Status], 1);
 
 	return 1;
+}
+
+hook Interface_OnPlayerDisconnect(playerid, reason)
+{
+	#pragma unused reason
+	
+	PlayerTextDrawDestroy(playerid, PlayerInfo[playerid][td_Status]);
+	
+	return 1;	
 }

@@ -36,20 +36,30 @@ function MySQL_CreateTables()
 query r@Player_Start(playerid)
 {
 	new
-	    numRows = cache_num_rows(),
+		numRows = cache_num_rows(),
 		string_Dialog[256];
-
-	format(string_Dialog, sizeof(string_Dialog), "{FF0000}Bem Vindo{FF0000}!\n\nVocê ainda não possui uma conta no Sao Paulo RP!\nConta: {FFFFFF}%s\n\n{FF0000}Digite uma {FFFFFF}senha {FF0000}abaixo!", PlayerInfo[playerid][player_Name]);
 	    
 	if (numRows)
 	{
-	    PlayerTextDrawSetString(playerid, PlayerInfo[playerid][td_Status], "~g~Conta verificada! Efetue seu login...");
+		format(string_Dialog, sizeof(string_Dialog), "{00FF00}Bem vindo novamente!\n\nSua conta já está registrada no São Paulo RP!\nConta: {FFFFFF}%s\n\n{00FF00}Digite sua {FFFFFF}senha {00FF00}abaixo!", PlayerInfo[playerid][player_Name]);
+		
+		PlayerTextDrawSetString(playerid, PlayerInfo[playerid][td_Status], "~g~Conta verificada! Efetue seu login...");
+		ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD, "{FFFFFF}Login", string_Dialog, "Login", "");
 	}
 	else
 	{
-	    PlayerTextDrawSetString(playerid, PlayerInfo[playerid][td_Status], "~r~Conta inexistente! Registre-se abaixo...");
+		format(string_Dialog, sizeof(string_Dialog), "{FF0000}Bem Vindo!\n\nVocê ainda não possui uma conta no São Paulo RP!\nConta: {FFFFFF}%s\n\n{FF0000}Digite uma {FFFFFF}senha {FF0000}abaixo!", PlayerInfo[playerid][player_Name]);
+		
+		PlayerTextDrawSetString(playerid, PlayerInfo[playerid][td_Status], "~r~Conta inexistente! Registre-se abaixo...");
 		ShowPlayerDialog(playerid, DIALOG_REGISTER, DIALOG_STYLE_INPUT, "{FFFFFF}Registro", string_Dialog, "Registrar", "");
 	}
 
 	return 1;
 }
+
+
+
+
+
+
+

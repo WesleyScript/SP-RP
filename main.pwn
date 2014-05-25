@@ -73,6 +73,7 @@ public OnPlayerConnect(playerid)
 
 public OnPlayerDisconnect(playerid, reason)
 {
+	Interface_OnPlayerDisconnect(playerid, reason);
 	Player_OnPlayerDisconnect(playerid, reason);
 
 	return 1;

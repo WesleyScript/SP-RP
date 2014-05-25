@@ -8,6 +8,9 @@ hook Player_OnPlayerConnect(playerid)
 	GetPlayerName(playerid, PlayerInfo[playerid][player_Name], MAX_PLAYER_NAME);
 	GetPlayerIp(playerid, PlayerInfo[playerid][player_Ip], 16);
 	
+	for (new l; l < 30; ++l)
+		SendClientMessage(playerid, 0xFFFFFFAA, "");
+	
 	Player_Start(playerid);
 	
 	return 1;
